@@ -5,9 +5,26 @@ description = "A simple coin flip random number generator"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
+license = { text = "MIT" }
 authors = [
     { name = "Mitch Allen" }
 ]
+keywords = ["random", "coin", "flip", "generator", "random-number"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Utilities",
+]
+
+[project.urls]
+Homepage = "https://github.com/mitchallen/python-coin-flip"
+Repository = "https://github.com/mitchallen/python-coin-flip"
+Issues = "https://github.com/mitchallen/python-coin-flip/issues"
 
 [build-system]
 requires = ["hatchling"]

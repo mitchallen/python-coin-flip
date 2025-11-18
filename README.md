@@ -1,22 +1,14 @@
 # mitchallen.coin
 
-A simple Python package that provides a coin flip random number generator.
+A simple, lightweight Python package that provides a random number generator perfect for simulations, games, and probabilistic applications.
 
 ## Installation
-
-```bash
-uv pip install mitchallen-coin
-```
-
-Or with pip:
 
 ```bash
 pip install mitchallen-coin
 ```
 
-## Usage
-
-The package provides a single function `flip()` that returns a random decimal number from 0.0 to < 1.0.
+## Quick Start
 
 ```python
 from mitchallen.coin import flip
@@ -26,7 +18,78 @@ result = flip()
 print(result)  # e.g., 0.7234567890123456
 ```
 
-## API
+## Usage Examples
+
+### Simulate a Coin Flip
+
+```python
+from mitchallen.coin import flip
+
+if flip() < 0.5:
+    print("Heads")
+else:
+    print("Tails")
+```
+
+### Random Probability Events
+
+```python
+from mitchallen.coin import flip
+
+# 30% chance of rain
+if flip() < 0.3:
+    print("Bring an umbrella!")
+else:
+    print("No rain expected")
+```
+
+### Monte Carlo Simulation
+
+```python
+from mitchallen.coin import flip
+
+# Estimate pi using Monte Carlo method
+inside_circle = 0
+total_points = 100000
+
+for _ in range(total_points):
+    x = flip()
+    y = flip()
+    if x*x + y*y <= 1:
+        inside_circle += 1
+
+pi_estimate = 4 * inside_circle / total_points
+print(f"Pi estimate: {pi_estimate}")
+```
+
+### Random Selection with Weighted Probabilities
+
+```python
+from mitchallen.coin import flip
+
+def choose_outcome(probabilities):
+    """Choose an outcome based on probability distribution."""
+    value = flip()
+    cumulative = 0
+    for outcome, prob in probabilities.items():
+        cumulative += prob
+        if value < cumulative:
+            return outcome
+    return list(probabilities.keys())[-1]
+
+# Game loot drop system
+loot = {
+    "common": 0.5,
+    "rare": 0.3,
+    "epic": 0.15,
+    "legendary": 0.05
+}
+
+result = choose_outcome(loot)
+print(f"You got: {result}")
+```
+
+## API Reference
 
 ### `flip()`
 
@@ -40,80 +103,21 @@ Returns a random floating-point number in the range [0.0, 1.0).
 ```python
 from mitchallen.coin import flip
 
-# Simulate a coin flip
-if flip() < 0.5:
-    print("Heads")
-else:
-    print("Tails")
+value = flip()
+assert 0.0 <= value < 1.0
 ```
 
-## Development
+## Why mitchallen.coin?
 
-This package uses `uv` for dependency management and packaging.
+- **Simple**: One function, does one thing well
+- **Lightweight**: No dependencies
+- **Tested**: Comprehensive test suite ensuring quality and reliability
+- **Namespace package**: Works alongside other mitchallen packages
 
-### Setup
+## Contributing
 
-1. Install dependencies:
-```bash
-make sync
-```
-
-Or manually:
-```bash
-uv sync
-```
-
-2. Install the package in development mode:
-```bash
-make install
-```
-
-### Running Tests
-
-The package includes a comprehensive test suite with pytest.
-
-```bash
-make test          # Run tests
-make test-verbose  # Run tests with verbose output
-```
-
-Or manually:
-```bash
-uv run pytest
-uv run pytest -v
-```
-
-### Available Make Commands
-
-- `make help` - Show all available commands
-- `make install` - Install package in development mode
-- `make sync` - Sync dependencies with uv
-- `make test` - Run tests with pytest
-- `make test-verbose` - Run tests with verbose output
-- `make clean` - Remove build artifacts and cache files
-- `make build` - Build the package distribution files
-- `make publish-test` - Publish to TestPyPI
-- `make publish` - Publish to PyPI
-
-### Building
-
-```bash
-make build
-```
-
-Or manually:
-```bash
-uv build
-```
-
-## Testing
-
-The package includes 7 comprehensive test cases that verify:
-- Return type validation
-- Range validation [0.0, 1.0)
-- Randomness and distribution
-- Statistical properties
+Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
 
 ## License
 
-MIT
+MIT License - see [LICENSE](LICENSE) for details.
