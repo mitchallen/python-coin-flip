@@ -58,9 +58,9 @@ publish:
 	git checkout main
 	@echo "Incrementing patch version..."
 	uv version --bump patch
-	@echo "Building package..."
-	$(MAKE) build
-	@echo "Publishing to PyPI..."
-	uv publish
 	@echo "Pushing changes and tags..."
 	git push && git push --tags
+	@echo "Getting new version..."
+	$(eval NEW_VERSION := $(shell uv version))
+	@echo "Creating GitHub release (this will trigger PyPI publish)..."
+	gh release create "v$(NEW_VERSION)" --title "v$(NEW_VERSION)" --generate-notes
