@@ -16,7 +16,7 @@ pip install mitchallen-coin
 ## Quick Start
 
 ```python
-from mitchallen.coin import flip, heads
+from mitchallen.coin import flip, heads, tails
 
 # Get a random number between 0.0 and 1.0
 result = flip()
@@ -25,6 +25,10 @@ print(result)  # e.g., 0.7234567890123456
 # Get a boolean coin flip result
 is_heads = heads()
 print(is_heads)  # True or False
+
+# Get the opposite boolean coin flip result
+is_tails = tails()
+print(is_tails)  # True or False
 ```
 
 ## Usage Examples
@@ -32,12 +36,19 @@ print(is_heads)  # True or False
 ### Simulate a Coin Flip
 
 ```python
-from mitchallen.coin import heads
+from mitchallen.coin import heads, tails
 
+# Using heads()
 if heads():
     print("Heads")
 else:
     print("Tails")
+
+# Or using tails()
+if tails():
+    print("Tails")
+else:
+    print("Heads")
 ```
 
 ### Random Probability Events
@@ -133,6 +144,25 @@ if result:
     print("Heads!")
 else:
     print("Tails!")
+```
+
+### `tails()`
+
+Returns the opposite boolean value of heads(). Returns True if heads() would return False, and False if heads() would return True.
+
+**Returns:**
+- `bool`: The opposite of what heads() would return
+
+**Example:**
+
+```python
+from mitchallen.coin import tails
+
+result = tails()
+if result:
+    print("Tails!")
+else:
+    print("Heads!")
 ```
 
 ## Why mitchallen.coin?

@@ -35,4 +35,19 @@ def heads():
     return flip() > 0.5
 
 
-__all__ = ["flip", "heads"]
+def tails():
+    """
+    Return the opposite boolean value of heads().
+
+    Returns:
+        bool: True if heads() would return False, False if heads() would return True
+
+    Examples:
+        >>> result = tails()
+        >>> isinstance(result, bool)
+        True
+    """
+    return not heads()
+
+
+__all__ = ["flip", "heads", "tails"]
