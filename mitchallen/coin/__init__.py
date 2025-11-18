@@ -1,8 +1,9 @@
 """mitchallen.coin - A simple coin flip random number generator."""
 
 import random
+from importlib.metadata import version
 
-__version__ = "1.0.0"
+__version__ = version("mitchallen-coin")
 
 
 def flip() -> bool:
