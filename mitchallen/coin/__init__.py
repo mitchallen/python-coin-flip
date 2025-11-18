@@ -20,4 +20,19 @@ def flip():
     return random.random()
 
 
-__all__ = ["flip"]
+def heads():
+    """
+    Return True if flip() > 0.5, False otherwise.
+
+    Returns:
+        bool: True if the coin flip result is greater than 0.5, False otherwise
+
+    Examples:
+        >>> result = heads()
+        >>> isinstance(result, bool)
+        True
+    """
+    return flip() > 0.5
+
+
+__all__ = ["flip", "heads"]

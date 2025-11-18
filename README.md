@@ -16,11 +16,15 @@ pip install mitchallen-coin
 ## Quick Start
 
 ```python
-from mitchallen.coin import flip
+from mitchallen.coin import flip, heads
 
 # Get a random number between 0.0 and 1.0
 result = flip()
 print(result)  # e.g., 0.7234567890123456
+
+# Get a boolean coin flip result
+is_heads = heads()
+print(is_heads)  # True or False
 ```
 
 ## Usage Examples
@@ -28,9 +32,9 @@ print(result)  # e.g., 0.7234567890123456
 ### Simulate a Coin Flip
 
 ```python
-from mitchallen.coin import flip
+from mitchallen.coin import heads
 
-if flip() < 0.5:
+if heads():
     print("Heads")
 else:
     print("Tails")
@@ -112,9 +116,28 @@ value = flip()
 assert 0.0 <= value < 1.0
 ```
 
+### `heads()`
+
+Returns True if flip() > 0.5, False otherwise. Useful for simple boolean coin flip simulations.
+
+**Returns:**
+- `bool`: True if the coin flip result is greater than 0.5, False otherwise
+
+**Example:**
+
+```python
+from mitchallen.coin import heads
+
+result = heads()
+if result:
+    print("Heads!")
+else:
+    print("Tails!")
+```
+
 ## Why mitchallen.coin?
 
-- **Simple**: One function, does one thing well
+- **Simple**: Clean API with intuitive functions
 - **Lightweight**: No dependencies
 - **Tested**: Comprehensive test suite ensuring quality and reliability
 - **Namespace package**: Works alongside other mitchallen packages
