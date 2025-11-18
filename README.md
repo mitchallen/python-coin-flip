@@ -13,6 +13,12 @@ A simple, lightweight Python package that provides a random number generator per
 pip install mitchallen-coin
 ```
 
+Or using [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv add mitchallen-coin
+```
+
 ## Quick Start
 
 ```python
