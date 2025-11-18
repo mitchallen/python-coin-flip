@@ -58,8 +58,11 @@ uv run pytest -v
 - `make test-verbose` - Run tests with verbose output
 - `make clean` - Remove build artifacts and cache files
 - `make build` - Build the package distribution files
+- `make bump-patch` - Bump patch version (0.1.0 -> 0.1.1)
+- `make bump-minor` - Bump minor version (0.1.0 -> 0.2.0)
+- `make bump-major` - Bump major version (0.1.0 -> 1.0.0)
 - `make publish-test` - Publish to TestPyPI
-- `make publish` - Publish to PyPI
+- `make publish` - Bump patch version, create GitHub release (triggers PyPI publish)
 
 ## Building
 
