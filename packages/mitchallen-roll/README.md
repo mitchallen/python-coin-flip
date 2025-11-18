@@ -4,6 +4,8 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
 [![License](https://img.shields.io/pypi/l/mitchallen-roll.svg)](https://github.com/mitchallen/python-coin-flip/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+[![CI](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-roll.yml/badge.svg)](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-roll.yml)
+[![codecov](https://codecov.io/gh/mitchallen/python-coin-flip/branch/main/graph/badge.svg?flag=mitchallen-roll)](https://codecov.io/gh/mitchallen/python-coin-flip)
 
 A simple dice rolling random number generator for Python.
 

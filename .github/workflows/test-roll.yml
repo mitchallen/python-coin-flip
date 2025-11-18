@@ -1,0 +1,54 @@
+name: Test mitchallen-roll
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'packages/mitchallen-roll/**'
+      - '.github/workflows/test-roll.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'packages/mitchallen-roll/**'
+      - '.github/workflows/test-roll.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test mitchallen-roll
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12', '3.13']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync --dev
+        working-directory: packages/mitchallen-roll
+
+      - name: Run tests with coverage
+        run: uv run pytest --cov=mitchallen.roll --cov-report=xml --cov-report=term
+        working-directory: packages/mitchallen-roll
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: packages/mitchallen-roll/coverage.xml
+          flags: mitchallen-roll
+          name: mitchallen-roll-${{ matrix.python-version }}
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
