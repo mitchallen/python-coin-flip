@@ -1,4 +1,4 @@
-.PHONY: help install test test-verbose clean build publish-test publish sync
+.PHONY: help install test test-verbose clean build publish-test publish sync bump-patch bump-minor bump-major
 
 help:
 	@echo "Available commands:"
@@ -8,8 +8,11 @@ help:
 	@echo "  make test-verbose  - Run tests with verbose output"
 	@echo "  make clean         - Remove build artifacts and cache files"
 	@echo "  make build         - Build the package"
+	@echo "  make bump-patch    - Bump patch version (0.1.0 -> 0.1.1)"
+	@echo "  make bump-minor    - Bump minor version (0.1.0 -> 0.2.0)"
+	@echo "  make bump-major    - Bump major version (0.1.0 -> 1.0.0)"
 	@echo "  make publish-test  - Publish to TestPyPI"
-	@echo "  make publish       - Publish to PyPI"
+	@echo "  make publish       - Bump patch, build, publish to PyPI, and push"
 
 install:
 	uv pip install -e .
@@ -32,11 +35,32 @@ clean:
 	find . -type f -name '*.pyc' -delete
 	find . -type f -name '*.pyo' -delete
 
+bump-patch:
+	@echo "Bumping patch version..."
+	uv version patch
+
+bump-minor:
+	@echo "Bumping minor version..."
+	uv version minor
+
+bump-major:
+	@echo "Bumping major version..."
+	uv version major
+
 build: clean
 	uv build
 
 publish-test: build
 	uv publish --publish-url https://test.pypi.org/legacy/
 
-publish: build
+publish:
+	@echo "Switching to main branch..."
+	git checkout main
+	@echo "Incrementing patch version..."
+	uv version patch
+	@echo "Building package..."
+	$(MAKE) build
+	@echo "Publishing to PyPI..."
 	uv publish
+	@echo "Pushing changes and tags..."
+	git push && git push --tags
