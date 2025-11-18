@@ -136,8 +136,8 @@ else:
 
 ## Contributing
 
-Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup and guidelines.
+Contributions are welcome! See [CONTRIBUTING.md](https://github.com/mitchallen/python-coin-flip/blob/main/CONTRIBUTING.md) for development setup and guidelines.
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) for details.
+MIT License - see [LICENSE](https://github.com/mitchallen/python-coin-flip/blob/main/LICENSE) for details.

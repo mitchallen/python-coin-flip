@@ -104,9 +104,9 @@ uv build
 
 ## Testing
 
-The package includes 7 comprehensive test cases that verify:
-- Return type validation
-- Range validation [0.0, 1.0)
+The package includes comprehensive test cases that verify:
+- Return type validation (boolean)
+- Boolean value validation (True/False)
 - Randomness and distribution
 - Statistical properties
 
