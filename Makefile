@@ -73,7 +73,7 @@ build: clean
 publish-test: build
 	uv publish --publish-url https://test.pypi.org/legacy/
 
-publish:
+publish: lint test
 	@echo "Switching to main branch..."
 	git checkout main
 	@echo "Pulling latest changes..."
