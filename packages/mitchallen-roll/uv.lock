@@ -190,7 +190,7 @@ wheels = [
 
 [[package]]
 name = "mitchallen-roll"
-version = "1.0.2"
+version = "1.0.4"
 source = { editable = "." }
 
 [package.dev-dependencies]
