@@ -18,15 +18,15 @@ pip install mitchallen-coin
 ```python
 from mitchallen.coin import flip, heads, tails
 
-# Get a random number between 0.0 and 1.0
-result = flip()
-print(result)  # e.g., 0.7234567890123456
-
 # Get a boolean coin flip result
+result = flip()
+print(result)  # True or False
+
+# Alternative: using heads()
 is_heads = heads()
 print(is_heads)  # True or False
 
-# Get the opposite boolean coin flip result
+# Alternative: using tails()
 is_tails = tails()
 print(is_tails)  # True or False
 ```
@@ -51,72 +51,26 @@ else:
     print("Heads")
 ```
 
-### Random Probability Events
+### Random 50/50 Decisions
 
 ```python
 from mitchallen.coin import flip
 
-# 30% chance of rain
-if flip() < 0.3:
-    print("Bring an umbrella!")
+# Use flip() for 50/50 decisions
+if flip():
+    print("Event A happens")
 else:
-    print("No rain expected")
-```
-
-### Monte Carlo Simulation
-
-```python
-from mitchallen.coin import flip
-
-# Estimate pi using Monte Carlo method
-inside_circle = 0
-total_points = 100000
-
-for _ in range(total_points):
-    x = flip()
-    y = flip()
-    if x*x + y*y <= 1:
-        inside_circle += 1
-
-pi_estimate = 4 * inside_circle / total_points
-print(f"Pi estimate: {pi_estimate}")
-```
-
-### Random Selection with Weighted Probabilities
-
-```python
-from mitchallen.coin import flip
-
-def choose_outcome(probabilities):
-    """Choose an outcome based on probability distribution."""
-    value = flip()
-    cumulative = 0
-    for outcome, prob in probabilities.items():
-        cumulative += prob
-        if value < cumulative:
-            return outcome
-    return list(probabilities.keys())[-1]
-
-# Game loot drop system
-loot = {
-    "common": 0.5,
-    "rare": 0.3,
-    "epic": 0.15,
-    "legendary": 0.05
-}
-
-result = choose_outcome(loot)
-print(f"You got: {result}")
+    print("Event B happens")
 ```
 
 ## API Reference
 
 ### `flip()`
 
-Returns a random floating-point number in the range [0.0, 1.0).
+Returns a random boolean value with 50% probability for True or False.
 
 **Returns:**
-- `float`: A random decimal number from 0.0 (inclusive) to 1.0 (exclusive)
+- `bool`: True or False with equal probability
 
 **Example:**
 
@@ -124,15 +78,21 @@ Returns a random floating-point number in the range [0.0, 1.0).
 from mitchallen.coin import flip
 
 value = flip()
-assert 0.0 <= value < 1.0
+assert isinstance(value, bool)
+
+# Use in conditional logic
+if flip():
+    print("Heads!")
+else:
+    print("Tails!")
 ```
 
 ### `heads()`
 
-Returns True if flip() > 0.5, False otherwise. Useful for simple boolean coin flip simulations.
+Returns a random boolean value (same as flip()). Useful for simple boolean coin flip simulations.
 
 **Returns:**
-- `bool`: True if the coin flip result is greater than 0.5, False otherwise
+- `bool`: True or False with equal probability
 
 **Example:**
 
