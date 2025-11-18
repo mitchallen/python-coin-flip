@@ -1,8 +1,10 @@
 name: Publish mitchallen-coin to PyPI
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'v*'
+      - '!roll-v*'
 
 permissions:
   contents: read
@@ -11,8 +13,6 @@ jobs:
   publish:
     name: Publish mitchallen-coin to PyPI
     runs-on: ubuntu-latest
-    # Only run for mitchallen-coin releases (tags like v1.0.0)
-    if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, 'roll-v')
     environment:
       name: pypi
       url: https://pypi.org/p/mitchallen-coin
