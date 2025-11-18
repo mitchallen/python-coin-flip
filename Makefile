@@ -61,6 +61,6 @@ publish:
 	@echo "Pushing changes and tags..."
 	git push && git push --tags
 	@echo "Getting new version..."
-	$(eval NEW_VERSION := $(shell uv version))
+	$(eval NEW_VERSION := $(shell uv version | awk '{print $$2}'))
 	@echo "Creating GitHub release (this will trigger PyPI publish)..."
 	gh release create "v$(NEW_VERSION)" --title "v$(NEW_VERSION)" --generate-notes
