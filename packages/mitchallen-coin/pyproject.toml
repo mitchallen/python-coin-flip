@@ -1,6 +1,6 @@
 [project]
 name = "mitchallen-coin"
-version = "1.0.4"
+version = "1.0.5"
 description = "A simple coin flip random number generator"
 readme = "README.md"
 requires-python = ">=3.12"
