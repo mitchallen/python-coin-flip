@@ -1,0 +1,32 @@
+coverage:
+  status:
+    project:
+      default:
+        # Require overall project coverage
+        target: auto
+        threshold: 0%
+    patch:
+      default:
+        # Require patch coverage
+        target: auto
+        threshold: 0%
+
+# Configure flags for monorepo packages
+flag_management:
+  default_rules:
+    carryforward: true
+
+flags:
+  mitchallen-roll:
+    paths:
+      - packages/mitchallen-roll/
+    carryforward: true
+  mitchallen-coin:
+    paths:
+      - packages/mitchallen-coin/
+    carryforward: true
+
+comment:
+  layout: "reach,diff,flags,files"
+  behavior: default
+  require_changes: false
