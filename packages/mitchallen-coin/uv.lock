@@ -190,7 +190,7 @@ wheels = [
 
 [[package]]
 name = "mitchallen-coin"
-version = "1.0.6"
+version = "1.0.7"
 source = { editable = "." }
 
 [package.dev-dependencies]
