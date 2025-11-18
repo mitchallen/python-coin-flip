@@ -4,6 +4,8 @@
 [![Python versions](https://img.shields.io/pypi/pyversions/mitchallen-coin.svg)](https://pypi.org/project/mitchallen-coin/)
 [![License](https://img.shields.io/pypi/l/mitchallen-coin.svg)](https://github.com/mitchallen/python-coin-flip/blob/main/LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/mitchallen-coin.svg)](https://pypi.org/project/mitchallen-coin/)
+[![CI](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-coin.yml/badge.svg)](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-coin.yml)
+[![codecov](https://codecov.io/gh/mitchallen/python-coin-flip/branch/main/graph/badge.svg?flag=mitchallen-coin)](https://codecov.io/gh/mitchallen/python-coin-flip)
 
 A simple, lightweight Python package that provides a random number generator perfect for simulations, games, and probabilistic applications.
 

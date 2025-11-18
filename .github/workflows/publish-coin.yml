@@ -1,0 +1,40 @@
+name: Publish mitchallen-coin to PyPI
+
+on:
+  push:
+    tags:
+      - 'coin-v*'
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Publish mitchallen-coin to PyPI
+    runs-on: ubuntu-latest
+    environment:
+      name: pypi
+      url: https://pypi.org/p/mitchallen-coin
+    permissions:
+      id-token: write  # Required for OIDC
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Build package
+        run: uv build
+        working-directory: packages/mitchallen-coin
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: packages/mitchallen-coin/dist
