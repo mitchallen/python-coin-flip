@@ -61,13 +61,13 @@ publish:
 	@echo "Incrementing patch version..."
 	uv version --bump patch
 	@echo "Getting new version..."
-	$(eval NEW_VERSION := $(shell uv version | awk '{print $$2}'))
-	@echo "Committing version bump..."
-	git add pyproject.toml uv.lock
-	git commit -m "Bump version to $(NEW_VERSION)"
-	@echo "Creating git tag..."
-	git tag "v$(NEW_VERSION)"
-	@echo "Pushing changes and tags..."
-	git push && git push --tags
-	@echo "Creating GitHub release (this will trigger PyPI publish)..."
-	gh release create "v$(NEW_VERSION)" --title "v$(NEW_VERSION)" --generate-notes
+	@NEW_VERSION=$$(uv version | awk '{print $$2}'); \
+	echo "Committing version bump to $$NEW_VERSION..."; \
+	git add pyproject.toml uv.lock; \
+	git commit -m "Bump version to $$NEW_VERSION"; \
+	echo "Creating git tag..."; \
+	git tag "v$$NEW_VERSION"; \
+	echo "Pushing changes and tags..."; \
+	git push && git push --tags; \
+	echo "Creating GitHub release (this will trigger PyPI publish)..."; \
+	gh release create "v$$NEW_VERSION" --title "v$$NEW_VERSION" --generate-notes
