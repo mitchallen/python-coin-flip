@@ -169,6 +169,8 @@ else:
 
 - **Simple**: Clean API with intuitive functions
 - **Lightweight**: No dependencies
+- **Type-safe**: Full type annotations with mypy type checking
+- **Quality**: Enforced code quality with Ruff linting and formatting
 - **Tested**: Comprehensive test suite ensuring quality and reliability
 - **Namespace package**: Works alongside other mitchallen packages
 

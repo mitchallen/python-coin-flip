@@ -1,6 +1,5 @@
 """Test cases for the mitchallen.coin.flip function."""
 
-import pytest
 from mitchallen.coin import flip, heads, tails
 
 

@@ -5,7 +5,7 @@ import random
 __version__ = "0.1.0"
 
 
-def flip():
+def flip() -> float:
     """
     Return a random decimal number from 0.0 to < 1.0.
 
@@ -20,7 +20,7 @@ def flip():
     return random.random()
 
 
-def heads():
+def heads() -> bool:
     """
     Return True if flip() > 0.5, False otherwise.
 
@@ -35,7 +35,7 @@ def heads():
     return flip() > 0.5
 
 
-def tails():
+def tails() -> bool:
     """
     Return the opposite boolean value of heads().
 

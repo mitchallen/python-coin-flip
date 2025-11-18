@@ -1,4 +1,4 @@
-.PHONY: help install test test-verbose clean build publish-test publish sync bump-patch bump-minor bump-major
+.PHONY: help install test test-verbose lint format lint-fix clean build publish-test publish sync bump-patch bump-minor bump-major
 
 help:
 	@echo "Available commands:"
@@ -6,6 +6,9 @@ help:
 	@echo "  make sync          - Sync dependencies with uv"
 	@echo "  make test          - Run tests with pytest"
 	@echo "  make test-verbose  - Run tests with verbose output"
+	@echo "  make lint          - Run all linters (ruff + mypy)"
+	@echo "  make format        - Auto-format code with ruff"
+	@echo "  make lint-fix      - Auto-fix linting issues with ruff"
 	@echo "  make clean         - Remove build artifacts and cache files"
 	@echo "  make build         - Build the package"
 	@echo "  make bump-patch    - Bump patch version (0.1.0 -> 0.1.1)"
@@ -25,6 +28,23 @@ test:
 
 test-verbose:
 	uv run pytest -v
+
+lint:
+	@echo "Running ruff check..."
+	uv run ruff check .
+	@echo "Running ruff format check..."
+	uv run ruff format --check .
+	@echo "Running mypy..."
+	uv run mypy mitchallen tests
+
+format:
+	@echo "Formatting code with ruff..."
+	uv run ruff format .
+
+lint-fix:
+	@echo "Auto-fixing linting issues..."
+	uv run ruff check --fix .
+	uv run ruff format .
 
 clean:
 	rm -rf build/

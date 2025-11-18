@@ -49,6 +49,30 @@ uv run pytest
 uv run pytest -v
 ```
 
+## Code Quality
+
+The project uses modern linting and formatting tools to maintain code quality:
+
+- **Ruff**: Fast Python linter and formatter (replaces black, flake8, isort, and more)
+- **Mypy**: Static type checker for Python
+
+### Running Linters
+
+```bash
+make lint          # Run all linters (ruff + mypy)
+make format        # Auto-format code with ruff
+make lint-fix      # Auto-fix linting issues and format code
+```
+
+Or manually:
+```bash
+uv run ruff check .
+uv run ruff format .
+uv run mypy mitchallen tests
+```
+
+All linting checks must pass before submitting a pull request.
+
 ## Available Make Commands
 
 - `make help` - Show all available commands
@@ -56,6 +80,9 @@ uv run pytest -v
 - `make sync` - Sync dependencies with uv
 - `make test` - Run tests with pytest
 - `make test-verbose` - Run tests with verbose output
+- `make lint` - Run all linters (ruff + mypy)
+- `make format` - Auto-format code with ruff
+- `make lint-fix` - Auto-fix linting issues with ruff
 - `make clean` - Remove build artifacts and cache files
 - `make build` - Build the package distribution files
 - `make bump-patch` - Bump patch version (0.1.0 -> 0.1.1)
@@ -90,16 +117,27 @@ All tests must pass before submitting a pull request.
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
-4. Run tests to ensure everything passes
+4. Run tests and linters to ensure everything passes:
+   ```bash
+   make test
+   make lint
+   ```
 5. Commit your changes (`git commit -m 'Add amazing feature'`)
 6. Push to the branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
 ## Code Style
 
-- Follow PEP 8 guidelines
-- Include docstrings for all functions
-- Add tests for new functionality
+The project enforces code quality through automated linting:
+
+- **Formatting**: Code is automatically formatted with Ruff (100 character line length)
+- **Linting**: Ruff checks for common errors, code smells, and style issues
+- **Type Checking**: Mypy ensures proper type annotations in the library code
+- **Standards**: Follows PEP 8 guidelines
+- **Documentation**: Include docstrings with type information for all functions
+- **Testing**: Add tests for new functionality
+
+Run `make lint-fix` to automatically fix most formatting and linting issues.
 
 ## Questions?
 
