@@ -1,5 +1,10 @@
 # mitchallen-roll
 
+[![PyPI version](https://img.shields.io/pypi/v/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+[![Python versions](https://img.shields.io/pypi/pyversions/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+[![License](https://img.shields.io/pypi/l/mitchallen-roll.svg)](https://github.com/mitchallen/python-coin-flip/blob/main/LICENSE)
+[![Downloads](https://img.shields.io/pypi/dm/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+
 A simple dice rolling random number generator for Python.
 
 ## Installation
