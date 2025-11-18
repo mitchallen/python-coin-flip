@@ -1,4 +1,4 @@
-.PHONY: help install test test-verbose lint format lint-fix clean build publish-test publish sync bump-patch bump-minor bump-major
+.PHONY: help install test test-verbose lint format lint-fix vuln-test clean build publish-test publish sync bump-patch bump-minor bump-major
 
 help:
 	@echo "Available commands:"
@@ -9,6 +9,7 @@ help:
 	@echo "  make lint          - Run all linters (ruff + mypy)"
 	@echo "  make format        - Auto-format code with ruff"
 	@echo "  make lint-fix      - Auto-fix linting issues with ruff"
+	@echo "  make vuln-test     - Run vulnerability testing with pip-audit"
 	@echo "  make clean         - Remove build artifacts and cache files"
 	@echo "  make build         - Build the package"
 	@echo "  make bump-patch    - Bump patch version (0.1.0 -> 0.1.1)"
@@ -46,6 +47,10 @@ lint-fix:
 	uv run ruff check --fix .
 	uv run ruff format .
 
+vuln-test:
+	@echo "Running vulnerability scan with pip-audit..."
+	uv run pip-audit
+
 clean:
 	rm -rf build/
 	rm -rf dist/
@@ -73,7 +78,7 @@ build: clean
 publish-test: build
 	uv publish --publish-url https://test.pypi.org/legacy/
 
-publish: lint test
+publish: lint test vuln-test
 	@echo "Switching to main branch..."
 	git checkout main
 	@echo "Pulling latest changes..."
