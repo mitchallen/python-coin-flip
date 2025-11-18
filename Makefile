@@ -37,15 +37,15 @@ clean:
 
 bump-patch:
 	@echo "Bumping patch version..."
-	uv version patch
+	uv version --bump patch
 
 bump-minor:
 	@echo "Bumping minor version..."
-	uv version minor
+	uv version --bump minor
 
 bump-major:
 	@echo "Bumping major version..."
-	uv version major
+	uv version --bump major
 
 build: clean
 	uv build
@@ -57,7 +57,7 @@ publish:
 	@echo "Switching to main branch..."
 	git checkout main
 	@echo "Incrementing patch version..."
-	uv version patch
+	uv version --bump patch
 	@echo "Building package..."
 	$(MAKE) build
 	@echo "Publishing to PyPI..."
