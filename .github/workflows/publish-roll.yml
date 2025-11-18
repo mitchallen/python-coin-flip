@@ -1,4 +1,4 @@
-name: Publish mitchallen-coin to PyPI
+name: Publish mitchallen-roll to PyPI
 
 on:
   release:
@@ -9,13 +9,13 @@ permissions:
 
 jobs:
   publish:
-    name: Publish mitchallen-coin to PyPI
+    name: Publish mitchallen-roll to PyPI
     runs-on: ubuntu-latest
-    # Only run for mitchallen-coin releases (tags like v1.0.0)
-    if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, 'roll-v')
+    # Only run for mitchallen-roll releases (tags like roll-v1.0.0)
+    if: startsWith(github.ref, 'refs/tags/roll-v')
     environment:
       name: pypi
-      url: https://pypi.org/p/mitchallen-coin
+      url: https://pypi.org/p/mitchallen-roll
     permissions:
       id-token: write  # Required for OIDC
 
@@ -33,9 +33,9 @@ jobs:
 
       - name: Build package
         run: uv build
-        working-directory: packages/mitchallen-coin
+        working-directory: packages/mitchallen-roll
 
       - name: Publish to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          packages-dir: packages/mitchallen-coin/dist
+          packages-dir: packages/mitchallen-roll/dist

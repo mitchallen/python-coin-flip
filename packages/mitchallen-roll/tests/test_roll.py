@@ -1,7 +1,8 @@
 """Tests for mitchallen.roll package."""
 
 import pytest
-from mitchallen.roll import roll, d6, d20
+
+from mitchallen.roll import d6, d20, roll
 
 
 def test_roll_default():
