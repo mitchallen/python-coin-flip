@@ -2,37 +2,37 @@
 
 import random
 
-__version__ = "0.1.0"
+__version__ = "1.0.0"
 
 
-def flip() -> float:
+def flip() -> bool:
     """
-    Return a random decimal number from 0.0 to < 1.0.
+    Return a random boolean value with 50% probability for True or False.
 
     Returns:
-        float: A random floating-point number in the range [0.0, 1.0)
+        bool: True or False with equal probability
 
     Examples:
         >>> result = flip()
-        >>> 0.0 <= result < 1.0
+        >>> isinstance(result, bool)
         True
     """
-    return random.random()
+    return random.random() > 0.5
 
 
 def heads() -> bool:
     """
-    Return True if flip() > 0.5, False otherwise.
+    Return a random boolean value (same as flip()).
 
     Returns:
-        bool: True if the coin flip result is greater than 0.5, False otherwise
+        bool: True or False with equal probability
 
     Examples:
         >>> result = heads()
         >>> isinstance(result, bool)
         True
     """
-    return flip() > 0.5
+    return flip()
 
 
 def tails() -> bool:
