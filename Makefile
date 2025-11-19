@@ -104,12 +104,12 @@ publish-coin: lint-coin test-coin vuln-test-coin
 	echo "Committing version bump to $$NEW_VERSION..."; \
 	git add $(COIN_DIR)/pyproject.toml; \
 	git commit -m "Bump mitchallen-coin to $$NEW_VERSION"; \
-	echo "Creating git tag v$$NEW_VERSION..."; \
-	git tag "v$$NEW_VERSION"; \
+	echo "Creating git tag coin-v$$NEW_VERSION..."; \
+	git tag "coin-v$$NEW_VERSION"; \
 	echo "Pushing changes and tags..."; \
 	git push && git push --tags; \
 	echo "Creating GitHub release (will trigger workflow to build and publish)..."; \
-	gh release create "v$$NEW_VERSION" --title "mitchallen-coin v$$NEW_VERSION" --generate-notes
+	gh release create "coin-v$$NEW_VERSION" --title "mitchallen-coin v$$NEW_VERSION" --generate-notes
 
 # mitchallen-roll commands
 install-roll:
