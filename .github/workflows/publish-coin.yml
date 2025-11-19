@@ -9,8 +9,36 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Test mitchallen-coin
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12', '3.13']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync --dev
+        working-directory: packages/mitchallen-coin
+
+      - name: Run tests with coverage
+        run: uv run pytest --cov=mitchallen.coin --cov-report=xml --cov-report=term
+        working-directory: packages/mitchallen-coin
+
   publish:
     name: Publish mitchallen-coin to PyPI
+    needs: test
     runs-on: ubuntu-latest
     environment:
       name: pypi
