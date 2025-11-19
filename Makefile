@@ -102,7 +102,7 @@ publish-coin: lint-coin test-coin vuln-test-coin
 	@echo "Getting new version..."
 	@NEW_VERSION=$$(cd $(COIN_DIR) && uv version | awk '{print $$2}'); \
 	echo "Committing version bump to $$NEW_VERSION..."; \
-	git add $(COIN_DIR)/pyproject.toml; \
+	git add $(COIN_DIR)/pyproject.toml $(COIN_DIR)/uv.lock; \
 	git commit -m "Bump mitchallen-coin to $$NEW_VERSION"; \
 	echo "Creating git tag coin-v$$NEW_VERSION..."; \
 	git tag "coin-v$$NEW_VERSION"; \
@@ -167,7 +167,7 @@ publish-roll: lint-roll test-roll vuln-test-roll
 	@echo "Getting new version..."
 	@NEW_VERSION=$$(cd $(ROLL_DIR) && uv version | awk '{print $$2}'); \
 	echo "Committing version bump to $$NEW_VERSION..."; \
-	git add $(ROLL_DIR)/pyproject.toml; \
+	git add $(ROLL_DIR)/pyproject.toml $(ROLL_DIR)/uv.lock; \
 	git commit -m "Bump mitchallen-roll to $$NEW_VERSION"; \
 	echo "Creating git tag roll-v$$NEW_VERSION..."; \
 	git tag "roll-v$$NEW_VERSION"; \
