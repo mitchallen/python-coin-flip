@@ -130,8 +130,8 @@ python-coin-flip/
 
 Each package is versioned and published independently:
 
-- **mitchallen-coin**: Uses tags like `coin-v1.0.4`
-- **mitchallen-roll**: Uses tags like `roll-v1.0.0`
+- **mitchallen-coin**: Uses tags like `v1.0.9`
+- **mitchallen-roll**: Uses tags like `roll-v1.0.9`
 
 To publish a package:
 
