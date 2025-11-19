@@ -1,6 +1,6 @@
 [project]
 name = "mitchallen-coin"
-version = "1.0.14"
+version = "1.0.15"
 description = "A simple, lightweight Python package for coin flip simulations, perfect for 50/50 decisions, games, and probabilistic applications"
 readme = "README.md"
 requires-python = ">=3.12"
