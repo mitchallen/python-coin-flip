@@ -7,7 +7,7 @@
 [![CI](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-coin.yml/badge.svg)](https://github.com/mitchallen/python-coin-flip/actions/workflows/test-coin.yml)
 [![codecov](https://codecov.io/gh/mitchallen/python-coin-flip/branch/main/graph/badge.svg?flag=mitchallen-coin)](https://codecov.io/gh/mitchallen/python-coin-flip)
 
-A simple, lightweight Python package that provides a random number generator perfect for simulations, games, and probabilistic applications.
+A simple, lightweight Python package for coin flip simulations, perfect for 50/50 decisions, games, and probabilistic applications.
 
 ## Installation
 
@@ -116,10 +116,10 @@ else:
 
 ### `tails()`
 
-Returns the opposite boolean value of heads(). Returns True if heads() would return False, and False if heads() would return True.
+Returns a random boolean value (same as flip()). Useful for simple boolean coin flip simulations where you want to express the check as "tails".
 
 **Returns:**
-- `bool`: The opposite of what heads() would return
+- `bool`: True or False with equal probability
 
 **Example:**
 

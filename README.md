@@ -1,6 +1,6 @@
 # mitchallen Python Packages
 
-A monorepo containing Python random number generation utilities.
+A monorepo containing Python utilities for coin flipping and dice rolling simulations.
 
 ## Packages
 
@@ -10,7 +10,7 @@ A monorepo containing Python random number generation utilities.
 [![Python versions](https://img.shields.io/pypi/pyversions/mitchallen-coin.svg)](https://pypi.org/project/mitchallen-coin/)
 [![Downloads](https://img.shields.io/pypi/dm/mitchallen-coin.svg)](https://pypi.org/project/mitchallen-coin/)
 
-A simple coin flip random number generator.
+A simple coin flip utility for 50/50 decisions and boolean outcomes.
 
 ```python
 from mitchallen.coin import flip, heads, tails
@@ -22,7 +22,11 @@ result = flip()  # Returns True or False with 50% probability
 
 ### 🎲 [mitchallen-roll](packages/mitchallen-roll)
 
-A dice rolling random number generator.
+[![PyPI version](https://img.shields.io/pypi/v/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+[![Python versions](https://img.shields.io/pypi/pyversions/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+[![Downloads](https://img.shields.io/pypi/dm/mitchallen-roll.svg)](https://pypi.org/project/mitchallen-roll/)
+
+A dice rolling utility for games and simulations.
 
 ```python
 from mitchallen.roll import roll, d6, d20
