@@ -1,7 +1,7 @@
 [project]
 name = "mitchallen-roll"
 version = "1.0.13"
-description = "A dice rolling random number generator"
+description = "A simple, lightweight Python package for dice rolling simulations with customizable sides, perfect for games, RPGs, and probabilistic applications"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
